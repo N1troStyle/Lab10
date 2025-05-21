@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Carti</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+<h2>Administrare Cărți</h2>
+<form method="post" action="operatii" class="mb-3">
+    <!textboxuri>
+    <input type="text" name="isbn" placeholder="ISBN..." size="40"/>
+    <input type="text" name="titlu" placeholder="Titlu..." size="40"/>
+    <input type="text" name="autor" placeholder="Autor..." size="40"/>
+    <!butoanele>
+    <input type="submit" name="adauga" value="Adauga"/>
+    <input type="submit" name="modifica" value="Modifica"/>
+    <input type="submit" name="sterge" value="Sterge"/>
+    <input type="submit" name="filtreaza" value="Filtrare dupa autor"/>
+</form>
+
+<p th:text="${mesaj}" class="alert alert-primary"></p>
+<!tabelul BD-ului>
+<table class="table table-bordered">
+    <thead><tr><th>ISBN</th><th>Titlu</th><th>Autor</th></tr></thead>
+    <tbody>
+    <tr th:each="carte : ${carti}">
+        <td th:text="${carte.isbn}"></td>
+        <td th:text="${carte.titlu}"></td>
+        <td th:text="${carte.autor}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
